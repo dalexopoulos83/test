@@ -24,6 +24,7 @@ public enum DriverType implements DriverSetup {
     FIREFOX {
         public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             FirefoxOptions options = new FirefoxOptions();
+            System.setProperty("webdriver.chrome.driver", "..\\Pandora_v1.1\\src\\test\\resources\\selenium_standalone_binaries\\windows\\marionette\\64bit\\geckodriver.exe");
             options.merge(capabilities);
 
             return new FirefoxDriver(options);
@@ -32,6 +33,7 @@ public enum DriverType implements DriverSetup {
     CHROME {
         public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             HashMap<String, Object> chromePreferences = new HashMap<>();
+            System.setProperty("webdriver.chrome.driver", "..\\Pandora_v1.1\\src\\test\\resources\\selenium_standalone_binaries\\windows\\googlechrome\\64bit\\chromedriver.exe");
             chromePreferences.put("profile.password_manager_enabled", false);
 
             ChromeOptions options = new ChromeOptions();
@@ -45,6 +47,7 @@ public enum DriverType implements DriverSetup {
     IE {
         public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             InternetExplorerOptions options = new InternetExplorerOptions();
+            System.setProperty("webdriver.chrome.driver", "..\\Pandora_v1.1\\src\\test\\resources\\selenium_standalone_binaries\\windows\\internetexplorer\\64bit\\IEDriverServer.exe");
             options.merge(capabilities);
             options.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
             options.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, true);
@@ -55,6 +58,7 @@ public enum DriverType implements DriverSetup {
     },
     EDGE {
         public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+            System.setProperty("webdriver.chrome.driver", "..\\Pandora_v1.1\\src\\test\\resources\\selenium_standalone_binaries\\windows\\edge\\64bit\\MicrosoftWebDriver.exe");
             EdgeOptions options = new EdgeOptions();
             options.merge(capabilities);
 
@@ -63,6 +67,7 @@ public enum DriverType implements DriverSetup {
     },
     SAFARI {
         public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+            System.setProperty("webdriver.chrome.driver", "..\\Pandora_v1.1\\src\\test\\resources\\selenium_standalone_binaries\\windows\\marionette\\64bit\\geckodriver.exe");
             SafariOptions options = new SafariOptions();
             options.merge(capabilities);
 
@@ -71,6 +76,7 @@ public enum DriverType implements DriverSetup {
     },
     OPERA {
         public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+            System.setProperty("webdriver.chrome.driver", "..\\Pandora_v1.1\\src\\test\\resources\\selenium_standalone_binaries\\windows\\operachromium\\64bit\\operadriver.exe");
             OperaOptions options = new OperaOptions();
             options.merge(capabilities);
 

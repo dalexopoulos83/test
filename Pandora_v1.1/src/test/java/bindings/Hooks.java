@@ -3,6 +3,7 @@ package bindings;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -42,7 +43,7 @@ public class Hooks{
     }
 
     public static boolean waitToDisplayAndReturnStatus(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, 60, 100);
+        WebDriverWait wait = new WebDriverWait(driver, 5, 100);
         wait.until((ExpectedCondition<Boolean>) driver-> element.isDisplayed());
         return element.isDisplayed();
     }
@@ -58,6 +59,31 @@ public class Hooks{
         wait.until((ExpectedCondition<Boolean>) driver-> element.isDisplayed());
         element.clear();
         element.sendKeys(arg);
+    }
+
+    public static void waitToDisplayAndSendKeysNoClear(WebElement element, String arg) {
+        WebDriverWait wait = new WebDriverWait(driver, 60, 100);
+        wait.until((ExpectedCondition<Boolean>) driver-> element.isDisplayed());
+        element.sendKeys(arg);
+    }
+
+    public static void sendTab(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 60, 100);
+        wait.until((ExpectedCondition<Boolean>) driver-> element.isDisplayed());
+        element.sendKeys(Keys.TAB);
+    }
+
+    public static void sendTabAndType(WebElement element, String arg1) {
+        WebDriverWait wait = new WebDriverWait(driver, 60, 100);
+        wait.until((ExpectedCondition<Boolean>) driver-> element.isDisplayed());
+        element.sendKeys(Keys.TAB);
+        element.sendKeys(arg1);
+    }
+
+    public static String waitToDisplayAndReturnContent(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 60, 100);
+        wait.until((ExpectedCondition<Boolean>) driver-> element.isDisplayed());
+        return element.getText();
     }
 
     @Before
